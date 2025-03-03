@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .box
+            {
+                border-width: 1px;
+                border-style: solid;
+                border-color: blue;
+                padding: 2px;
+                margin: 2px;
+            }
+            
+        </style>
+        
+        <script>
+            var count = 1;
+            
+            function appendStudent()
+            {
+                count++;
+                var container = document.getElementById('container');
+                var box = document.createElement('div');
+                box.id = 'box' + count;
+                box.className = 'box';
+                var box_innerhtml = '<input type="hidden" name="index" value="'+count+'" />';
+                box_innerhtml+='Sid:<input type="text" name="sid'+count+'"/> <br/>';
+                box_innerhtml+='Name: <input type="text" name="name'+count+'"/> <br/>';
+                box_innerhtml+='Gender: <input type="radio" value="male" name="gender'+count+'" checked="checked"/> Male';
+                box_innerhtml+='<input type="radio" value="female" name="gender'+count+'" /> Female';
+                box_innerhtml+='<br/>';
+                box_innerhtml+='Dob:<input type="date" name="dob'+count+'"/>';
+                box.innerHTML = box_innerhtml;
+                
+                container.appendChild(box);
+            }
+            
+        </script>
+        
+    </head>
+    <body>
+        <form id="saveStudents" action="add" method="POST">
+            <div id="container">
+                <div id="box1" class="box">
+                    <input type="hidden" name="index" value="1" />
+                    Sid:<input type="text" name="sid1"/> <br/>
+                    Name: <input type="text" name="name1"/> <br/>
+                    Gender: <input type="radio" value="male" name="gender1" checked="checked"/> Male
+                    <input type="radio" value="female" name="gender1" /> Female
+                    <br/>
+                    Dob:<input type="date" name="dob1"/>
+                </div>
+            </div>
+            <input type="button" value="+ Student" onclick="appendStudent();"/>
+        </form>
+        <input type="button" value="Send" onclick="document.getElementById('saveStudents').submit()"/>
+    </body>
+</html>
